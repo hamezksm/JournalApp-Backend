@@ -5,7 +5,7 @@ from django.contrib.auth.models import AbstractUser
 
 class User(AbstractUser):
     # Add any additional fields that you need for you user account
-    date_of_birth = models.DateField(blank=True, null=False)
+    date_of_birth = models.DateField(blank=True, null=True)
     gender = models.CharField(max_length=50)
     
 class Journal(models.Model):

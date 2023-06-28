@@ -1,12 +1,15 @@
-# from rest_framework import routers
-# from . import views
+from rest_framework import routers
+from .views import *
+from django.urls import path, include
 
-# # Create your urls here
+# Create your urls here
 
-# router = routers.DefaultRouter()
-# router.register(r'User', views.UserList, basename='User')
-# router.register(r'User', views.UserDetail, basename='User')
-# router.register(r'Journal', views.JournalList, basename='Journal')
-# router.register(r'Journal', views.JournalDetails, basename='Journal')
+router = routers.DefaultRouter()
+router.register(r'user', UserViewSet, basename='user')
 
-# urlpatterns = router.urls
+
+urlpatterns = [
+    path('',include(router.urls)),
+    path('journals', JournalList.as_view(), name='journals'),
+    path('journal', JournalDetail.as_view(), name='journal'),
+]
