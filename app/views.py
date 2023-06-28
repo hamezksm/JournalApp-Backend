@@ -11,7 +11,7 @@ class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
     
-    # In case a user want to deete him/herself
+    # In case a user want to delete him/herself
     def destroy(self, request, *args, **kwargs):
         instance = self.get_object()
 
@@ -29,7 +29,7 @@ class JournalList(generics.ListCreateAPIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     
     def perform_create(self, serializer):
-        serializer.save(owner=self.request.user)
+        serializer.save(user=self.request.user)
     
     
 class JournalDetail(generics.RetrieveUpdateDestroyAPIView):
